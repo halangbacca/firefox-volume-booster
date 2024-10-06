@@ -20,11 +20,10 @@ if (!window.audioContext) {
 
 function setVolume(level) {
   if (window.gainNode) {
-    window.gainNode.gain.value = level;
+    window.gainNode.gain.value = level * 6.0;
   }
 }
 
-// Escuta mensagens para ajuste de volume
 browser.runtime.onMessage.addListener((message) => {
   if (message.action === "setVolume") {
     setVolume(message.volume);
